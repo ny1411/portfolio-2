@@ -151,8 +151,8 @@ Instead of rendering literal character graphics, the design language uses subtle
 - [x] Develop the `Footer` and establish the main layout wrappers.
 
 ## [ ] Phase 3: Core Sections & Static Pre-rendering
-- [ ] Wire up **SSG (Static Site Generation)** to read from `resumeContent.ts` directly in Server Components (no client-side `useEffect` loaders).
-- [ ] Implement the `HeroSection` (with cinematic CSS/SVG background and parallax fog).
+- [x] Wire up **SSG (Static Site Generation)** to read from `resumeContent.ts` directly in Server Components (no client-side `useEffect` loaders).
+- [x] Implement the `HeroSection` (with cinematic CSS/SVG background and parallax fog).
 - [ ] Implement the `About` and `ExperienceTimeline` components.
 - [ ] Implement the `ProjectGrid` and `ProjectCard` with electric blue hover border shifts (disable on touch devices).
 
