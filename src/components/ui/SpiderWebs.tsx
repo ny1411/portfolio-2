@@ -49,7 +49,7 @@ export function SpiderWebs() {
   if (!mounted) return null;
 
   return (
-    <div className="absolute inset-0 pointer-events-none z-[0] overflow-hidden">
+    <div className="absolute inset-0 pointer-events-none z-20 overflow-hidden">
       {positions.map((pos, i) => (
         <div
           key={i}

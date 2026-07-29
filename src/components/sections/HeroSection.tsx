@@ -37,9 +37,8 @@ export function HeroSection() {
         />
         {/* Snowy or Rain effect */}
         {Math.random() > 0.5 ? <RainEffect /> : <SnowEffect />}
-        {/* Gradient overlay at bottom to blend into page */}
-        <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-transparent z-20" />
       </div>
+      <div className="absolute z-0 inset-0 pointer-events-none backdrop-blur-xl [mask-image:radial-gradient(ellipse_at_center,transparent_50%,black_100%)]" />
 
       {/* === Profile Content === */}
       <div className="w-full p-8 md:p-20">

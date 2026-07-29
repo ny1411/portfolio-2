@@ -5,42 +5,71 @@
   --font-heading: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
 
-  /* DESIGN.md exact colors */
-  --color-bg-primary: #080A0F;
-  --color-bg-surface: #11141B;
-  --color-bg-surface-hover: #171C24;
-  --color-accent-red: #E53935;
-  --color-accent-red-dim: #C62828;
-  --color-accent-blue: #3B82F6;
-  --color-accent-blue-dim: #2563EB;
-  --color-text-primary: #F5F7FA;
-  --color-text-secondary: #A6ABB5;
-  --color-border: rgba(255, 255, 255, 0.08);
+  /* Dynamically map tailwind colors to css variables */
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-surface-hover: var(--bg-surface-hover);
+  --color-accent-red: var(--accent-red);
+  --color-accent-red-dim: var(--accent-red-dim);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-blue-dim: var(--accent-blue-dim);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border: var(--border-color);
 }
 
 :root {
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
+  /* Light Theme Colors */
+  --bg-primary: #cecece;
+  --bg-surface: #b3ccff;
+  --bg-surface-hover: #81abff;
+  --accent-red: #E53935;
+  --accent-red-dim: #C62828;
+  --accent-blue: #3B82F6;
+  --accent-blue-dim: #2563EB;
+  --text-primary: #080A0F;
+  --text-secondary: #4B5563;
+  --border-color: rgba(0, 0, 0, 0.08);
+
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.dark {
+  /* Dark Theme Colors */
+  --bg-primary: #080A0F;
+  --bg-surface: #11141B;
+  --bg-surface-hover: #171C24;
+  --accent-red: #E53935;
+  --accent-red-dim: #C62828;
+  --accent-blue: #3B82F6;
+  --accent-blue-dim: #2563EB;
+  --text-primary: #F5F7FA;
+  --text-secondary: #A6ABB5;
+  --border-color: rgba(255, 255, 255, 0.08);
 }
 
 /* Minimal scrollbar */
 ::-webkit-scrollbar {
   width: 4px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--color-bg-primary);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--color-border);
   border-radius: 2px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-text-secondary);
 }
 
 /* Subtle selection */
 ::selection {
-  background-color: rgba(59, 130, 246, 0.25);
+  background-color: rgba(255, 45, 45, 0.25);
   color: #fff;
 }
 
@@ -53,13 +82,11 @@ hr {
 
 /* Diagonal hash pattern */
 .bg-diagonal-pattern {
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 10px,
-    var(--color-border) 10px,
-    var(--color-border) 11px
-  );
+  background-image: repeating-linear-gradient(45deg,
+      transparent,
+      transparent 10px,
+      var(--color-border) 10px,
+      var(--color-border) 11px);
 }
 
 /* Noise texture overlay for entire page */
