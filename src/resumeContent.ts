@@ -42,21 +42,32 @@ export const resumeContent = {
 	],
 	workExperiences: [
 		{
+			title: 'Freelance',
+			subtitle: 'Remote',
+			body: [
+				'Developed a premium global telecom top-up platform using Next.js, React, TypeScript, and Tailwind CSS, implementing a scalable App Router architecture, component library, and responsive UI.',
+				'Built a scalable telecom backend using Node.js, Express.js, TypeScript, and Supabase (PostgreSQL) implementing JWT authentication, RBAC, rate limiting, security middleware, and modular REST APIs.'
+			],
+			link: '',
+			tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'REST APIs', 'Supabase', 'Node.js', 'Express.js'],
+		},
+		{
 			title: 'PHP Developer at Fermion Infotech',
 			subtitle: 'On site, Navi Mumbai, 1 month',
 			body: [
 				'Built and deployed projects including a Todo App and an E-Commerce Platform in PHP featuring authentication systems, session management, role-based modules, database integration, and responsive user interfaces.',
 				'Implemented secure login and password management using bcrypt, and developed interactive frontend features such as form validation, filtering, and dynamic content rendering.'
 			],
-			link: '',
+			link: 'https://drive.google.com/file/d/1p1G7RWdCknapJHaFUDQMkC-2fwJer7_o/view?usp=sharing',
 			tags: ['PHP', 'MVC', 'HTML', 'CSS', 'jQuery', 'REST APIs', 'Bootstrap'],
 		},
 		{
 			title: 'Frontend Developer Intern at Yahweh Software Solutions',
 			subtitle: 'Remote, Bengaluru, KA, May 2025 - Sept 2025',
 			body: [
-				'Architected and developed real-time dashboards across multiple modules of an Education ERP.',
-				'Developed a Bus Tracking System to provide real-time location updates using MapBoxGL.',
+				'Engineered a Bus Tracking System with live location updates (MapboxGL), while developing responsive and accessible modules for HRMS, Event Management, and Authentication system.',
+				'Collaborated with backend engineers to integrate RESTful APIs, develop reusable UI components, and optimize frontend architecture for maintainability, performance, and efficient data flow.',
+				'Built scalable ReactJS applications using the Context API for authentication and session management, ensuring responsiveness, cross-browser compatibility, and accessibility across desktop and mobile devices',
 			],
 			link: 'https://drive.google.com/file/d/1b5qlTdBPUsItcsR__OkyJDukrNN78U7p/view?usp=sharing',
 			tags: ['Frontend Development', 'ReactJS', 'Tailwind CSS', 'ERP Systems', 'Supabase', 'MapBoxGL'],
@@ -73,27 +84,56 @@ export const resumeContent = {
 		},
 	],
 	projectItems: [
+
 		{
-			title: 'Repolyse',
-			stack: ['ReactJS', 'Tailwind CSS', 'Flask', 'Python', 'Gemini'],
+			title: 'Founders Directory',
+			stack: ['Next.js', 'TypeScript', 'ReactJS', 'Tailwind CSS', 'Firebase', 'Gemini API'],
 			body: [
-				"Engineered a Flask REST API that analyses GitHub repositories using Google's Gemini and 4 transformer models: CodeBERT, RoBERTa, DistilBERT, and T5.",
-				'Implemented intelligent security scanning that detects vulnerabilities through keyword analysis and ML-based classification with a 10-point scoring system.',
+				' Built a startup discovery platform featuring 900+ Y Combinator startups; launched with 12 active users and received 9 Product Hunt upvotes.',
+				'Automated data collection through Playwright + Cheerio scraping pipelines to collect, normalize, and upsert startup data into Firebase Firestore.',
+				'Designed a scalable Firebase backend with Authentication, Firestore, and protected user profiles supporting AI-powered personalized outreach using Gemini Flash API.',
 			],
 			links: [
-				{ label: 'Source code', href: 'https://github.com/ny1411/repolyse' },
-				{ label: 'Live demo', href: 'https://repolyse.vercel.app/' },
+				{ label: 'Source code', href: 'https://github.com/ny1411/founders-directory' },
+				{ label: 'Live Demo', href: 'https://www.founders.neerajyamaji.com' },
+			],
+		},
+		{
+			title: 'ValidX',
+			stack: ['ReactJS', 'JavaScript', 'Node.js', 'Express.js', 'MongoDB', 'Tesseract OCR', 'OpenCV', 'Python', 'Fast API', 'Solidity'],
+			body: [
+				'Developed a microservice-based academic certificate verification platform with role-based access control, real-time verification workflows, and Dockerized deployment architecture.',
+				'Engineered an AI-assisted document verification pipeline integrating Tesseract OCR, OpenCV-based digital forensics, anomaly detection, semantic certificate hashing, and heuristic tampering analysis for fake certificate detection.',
+				'Built scalable verification and trust workflows including JWT authentication, institution-scoped RBAC, blockchain-backed document anchoring, audit logging, OCR orchestration, and deterministic candidate-to-trusted certificate matching.',
+				'Implemented blockchain-backed certificate verification workflows using Solidity/EVM smart contracts and Solana Anchor integration for immutable document hash anchoring and public verification.',
+			],
+			links: [
+				{ label: 'Source code', href: 'https://github.com/ombalgude/validator2.o' },
 			],
 		},
 		{
 			title: 'GitMatch',
-			stack: ['ReactJS', 'Node.js', 'Express.js', 'Firebase'],
+			stack: ['ReactJS', 'TypeScript', 'Node.js', 'Express.js', 'Firebase'],
 			body: [
 				'Built a Tinder-style dating web application with interactive swipe gestures and dynamic card transitions using Motion animation library.',
-				'Architected and implemented a scalable real-time matching algorithm with a 65/35 weighted scoring system that analyzes GitHub profiles, tech stacks, and compatibility factors.',
+				'Architected & implemented a scalable real-time matching algorithm with 65/35 weighted scoring system that analyzes GitHub profiles, tech stacks, and compatibility factors to suggest optimal developer matches.',
+				'Engineered a backend repository intelligence pipeline for GitHub profile ingestion, repository metadata extraction, technology detection, contribution analysis, and compatibility scoring using weighted matching algorithms.',
 			],
 			links: [
 				{ label: 'Source code', href: 'https://github.com/ny1411/git-match' },
+			],
+		},
+		{
+			title: 'Repolyse',
+			stack: ['ReactJS', 'JavaScript', 'Tailwind CSS', 'Flask', 'Python', 'Gemini'],
+			body: [
+				'Engineered a Flask REST API to analyse GitHub repositories using Google Gemini and 4 transformer models (CodeBERT, RoBERTa, DistilBERT, T5).',
+				'Developed a vulnerability detection system using keyword analysis with a 10-point scoring system.',
+				'Built documentation generator to produce comprehensive code summaries, quality metrics, and repository-wide coherence analysis',
+			],
+			links: [
+				{ label: 'Source code', href: 'https://github.com/ny1411/repolyse' },
+				{ label: 'Live demo', href: 'https://repolyse.vercel.app/' },
 			],
 		},
 	],
