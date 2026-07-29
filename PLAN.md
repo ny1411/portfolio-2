@@ -159,7 +159,7 @@ Instead of rendering literal character graphics, the design language uses subtle
 ## [ ] Phase 4: Animations & Spider-Man Easter Eggs
 - [x] Build the **custom animated spider cursor** with a fading web thread.
 - [x] Create the initial loading screen (spider descending, logo fade).
-- [ ] Add the web-thread scroll indicator mapping to Lenis scroll progress.
+- [x] Add the web-thread scroll indicator mapping to Lenis scroll progress.
 - [ ] Build the `⌘K` OSCORP-inspired Command Palette.
 
 ## [ ] Phase 5: Secondary Pages & Polish
