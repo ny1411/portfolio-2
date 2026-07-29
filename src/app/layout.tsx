@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 import "./globals.css";
 
 const inter = Inter({
@@ -32,7 +33,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}>
-      <body className="antialiased min-h-screen font-sans bg-bg-primary text-text-primary flex flex-col">
+      <body className="antialiased min-h-screen font-sans bg-bg-primary text-text-primary flex flex-col cursor-none md:cursor-auto">
+        <CustomCursor />
         <SmoothScroll>
           <Navbar />
           <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28">
