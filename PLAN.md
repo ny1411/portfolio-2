@@ -150,11 +150,11 @@ Instead of rendering literal character graphics, the design language uses subtle
 - [x] Build the **"hide-on-scroll-down, show-on-scroll-up" Sticky Navbar** to maximize cinematic screen space.
 - [x] Develop the `Footer` and establish the main layout wrappers.
 
-## [ ] Phase 3: Core Sections & Static Pre-rendering
+## [x] Phase 3: Core Sections & Static Pre-rendering
 - [x] Wire up **SSG (Static Site Generation)** to read from `resumeContent.ts` directly in Server Components (no client-side `useEffect` loaders).
 - [x] Implement the `HeroSection` (with cinematic CSS/SVG background and parallax fog).
 - [x] Implement the `About` and `ExperienceTimeline` components.
-- [ ] Implement the `ProjectGrid` and `ProjectCard` with electric blue hover border shifts (disable on touch devices).
+- [x] Implement the `ProjectGrid` and `ProjectCard` with electric blue hover border shifts (disable on touch devices).
 
 ## [ ] Phase 4: Animations & Spider-Man Easter Eggs
 - [ ] Build the **custom animated spider cursor** with a fading web thread.
