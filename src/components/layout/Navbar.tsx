@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -43,12 +44,21 @@ export function Navbar() {
         animate={hidden ? "hidden" : "visible"}
         transition={{ duration: 0.25, ease: "easeInOut" }}
         className={cn(
-          "pointer-events-auto w-full max-w-[1024px] flex items-center justify-between px-6 md:px-10 h-14 transition-all duration-200 border-b md:border-x border-border",
-          !isAtTop
-            ? "bg-bg-primary/95 backdrop-blur-sm"
-            : "bg-bg-primary"
+          "relative pointer-events-auto w-full max-w-[1024px] flex items-center justify-between px-6 md:px-10 h-14 transition-all duration-200 border-b md:border-x border-border",
+          "bg-bg-primary/60 backdrop-blur-sm"
         )}
       >
+        {/* Hanging Spider */}
+        <div className="absolute top-0 left-[15%] md:left-[10%] w-14 md:w-20 pointer-events-none z-10">
+          <Image 
+            src="/hanging-spider.png"
+            alt="Hanging Spider"
+            width={60}
+            height={90}
+            className="w-full h-auto"
+          />
+        </div>
+
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <span className="font-heading font-bold text-lg text-text-primary tracking-tight">

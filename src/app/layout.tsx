@@ -4,6 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { SpiderWebs } from "@/components/ui/SpiderWebs";
 import { SmoothScroll } from "@/components/SmoothScroll";
 
 const inter = Inter({
@@ -38,6 +39,7 @@ export default function RootLayout({
         <CustomCursor/>
         <SmoothScroll>
           <main className="flex-1 w-full relative z-[1]">
+            <SpiderWebs />
             {children}
           </main>
         </SmoothScroll>
