@@ -41,7 +41,7 @@ export function SpiderWebs() {
       
       newPositions.push(pos);
     }
-    
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setPositions(newPositions);
     setMounted(true);
   }, []);

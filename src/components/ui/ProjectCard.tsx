@@ -19,6 +19,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsTouchDevice(
       "ontouchstart" in window || navigator.maxTouchPoints > 0
     );

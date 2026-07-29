@@ -9,16 +9,13 @@ import { cn } from "@/lib/utils";
 export function Navbar() {
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
-  const [isAtTop, setIsAtTop] = useState(true);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
     
     if (latest <= 50) {
-      setIsAtTop(true);
       setHidden(false);
     } else {
-      setIsAtTop(false);
       if (latest > previous && latest > 150) {
         setHidden(true);
       } else {
