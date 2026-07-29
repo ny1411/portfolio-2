@@ -144,11 +144,11 @@ Instead of rendering literal character graphics, the design language uses subtle
 - [x] Set up the **Lenis smooth scrolling** wrapper in the root layout.
 - [x] Create base TypeScript interfaces from `resumeContent.ts` to ensure strict typing.
 
-## [ ] Phase 2: Base UI Components & Layout
+## [x] Phase 2: Base UI Components & Layout
 - [x] Build highly accessible base components (`Button`, `Card`, `TechPill`) featuring **High-Contrast Focus States**.
 - [x] Implement **Magnetic CTA buttons** using Framer Motion (ensure this disables on touch devices).
 - [x] Build the **"hide-on-scroll-down, show-on-scroll-up" Sticky Navbar** to maximize cinematic screen space.
-- [ ] Develop the `Footer` and establish the main layout wrappers.
+- [x] Develop the `Footer` and establish the main layout wrappers.
 
 ## [ ] Phase 3: Core Sections & Static Pre-rendering
 - [ ] Wire up **SSG (Static Site Generation)** to read from `resumeContent.ts` directly in Server Components (no client-side `useEffect` loaders).
