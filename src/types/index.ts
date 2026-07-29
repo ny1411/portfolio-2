@@ -3,30 +3,30 @@ export interface ResumePage {
   title: string;
   subtitle: string;
   summary?: string;
-  body?: string[];
-  highlights?: string[];
+  body?: readonly string[];
+  highlights?: readonly string[];
 }
 
 export interface WorkExperience {
   title: string;
   subtitle: string;
-  body: string[];
+  body: readonly string[];
   link?: string;
-  tags: string[];
+  tags: readonly string[];
 }
 
 export interface ProjectItem {
   title: string;
-  stack: string[];
-  body: string[];
-  links: { label: string; href: string }[];
+  stack: readonly string[];
+  body: readonly string[];
+  links: readonly { label: string; href: string }[];
 }
 
 export interface ExtracurricularExperience {
   title: string;
   subtitle: string;
   link: string;
-  tags: string[];
+  tags: readonly string[];
 }
 
 export interface EducationDetails {
@@ -38,18 +38,18 @@ export interface EducationDetails {
 }
 
 export interface SkillsAndStack {
-  languages: string[];
-  frontend: string[];
-  backendApis: string[];
-  cloudDatabases: string[];
-  developerTools: string[];
+  languages: readonly string[];
+  frontend: readonly string[];
+  backendApis: readonly string[];
+  cloudDatabases: readonly string[];
+  developerTools: readonly string[];
 }
 
 export interface ResumeContent {
-  resumePages: ResumePage[];
-  workExperiences: WorkExperience[];
-  projectItems: ProjectItem[];
-  extracurricularExperiences: ExtracurricularExperience[];
+  resumePages: readonly ResumePage[];
+  workExperiences: readonly WorkExperience[];
+  projectItems: readonly ProjectItem[];
+  extracurricularExperiences: readonly ExtracurricularExperience[];
   educationDetails: EducationDetails;
   skillsAndStack: SkillsAndStack;
 }

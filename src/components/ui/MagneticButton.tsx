@@ -34,7 +34,6 @@ export function MagneticButton({
     const centerX = left + width / 2;
     const centerY = top + height / 2;
     
-    // Move slightly towards the cursor
     x.set((clientX - centerX) * 0.2);
     y.set((clientY - centerY) * 0.2);
   };
@@ -65,7 +64,7 @@ export function MagneticButton({
     >
       <Button
         className={cn(
-          isHovered && !isTouchDevice ? "scale-105 shadow-xl shadow-accent-blue/20" : "",
+          isHovered && !isTouchDevice ? "scale-105 shadow-xl shadow-accent-red/20" : "",
           className
         )}
         {...props}

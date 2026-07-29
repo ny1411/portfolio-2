@@ -1,62 +1,78 @@
-import { Card } from "@/components/ui/Card";
+"use client";
+
+import { motion } from "framer-motion";
 import { TechPill } from "@/components/ui/TechPill";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import type { WorkExperience } from "@/types";
 
 interface ExperienceTimelineProps {
-  experiences: WorkExperience[];
+  experiences: readonly WorkExperience[];
 }
 
 export function ExperienceTimeline({ experiences }: ExperienceTimelineProps) {
   return (
-    <section id="experience" className="scroll-mt-32 max-w-4xl">
-      <h2 className="text-3xl font-bold font-heading mb-10 tracking-tight text-text-primary">
-        Experience
-      </h2>
-      <div className="space-y-6 border-l border-white/5 pl-4 ml-2 md:pl-8 md:ml-4">
+    <div>
+      {/* Section label with hairline */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        viewport={{ once: true, margin: "-50px" }}
+        className="flex items-center gap-4 mb-8"
+      >
+        <h2 className="text-xs font-bold font-heading tracking-widest uppercase text-text-secondary">
+          Experience
+        </h2>
+        <div className="flex-1 h-px bg-border" />
+      </motion.div>
+
+      {/* Experience entries — flat, separated by hairlines */}
+      <div className="divide-y divide-border">
         {experiences.map((exp, index) => (
-          <div key={index} className="relative group">
-            {/* Timeline dot */}
-            <div className="absolute -left-[21px] md:-left-[37px] top-6 h-2 w-2 rounded-full bg-accent-blue/50 ring-4 ring-bg-primary transition-colors group-hover:bg-accent-blue" />
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: index * 0.08 }}
+            viewport={{ once: true, margin: "-50px" }}
+            className="group py-6 first:pt-0 last:pb-0"
+          >
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-2 mb-4">
+              <div>
+                <h3 className="text-base font-bold text-text-primary group-hover:text-accent-blue transition-colors duration-200">
+                  {exp.title}
+                </h3>
+                <p className="text-sm font-mono text-text-secondary mt-1">
+                  {exp.subtitle}
+                </p>
+              </div>
+              {exp.link && (
+                <Link 
+                  href={exp.link} 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-200 shrink-0"
+                >
+                  View details <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
+              )}
+            </div>
             
-            <Card className="p-6 md:p-8 flex flex-col gap-4">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
-                <div>
-                  <h3 className="text-xl font-bold text-text-primary group-hover:text-accent-blue transition-colors">
-                    {exp.title}
-                  </h3>
-                  <p className="text-sm font-mono text-text-secondary mt-1">
-                    {exp.subtitle}
-                  </p>
-                </div>
-                {exp.link && (
-                  <Link 
-                    href={exp.link} 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors"
-                  >
-                    View details <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-                )}
-              </div>
-              
-              <ul className="list-disc list-outside ml-4 space-y-2 text-text-secondary">
-                {exp.body.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-              
-              <div className="flex flex-wrap gap-2 mt-2">
-                {exp.tags.map((tag, i) => (
-                  <TechPill key={i}>{tag}</TechPill>
-                ))}
-              </div>
-            </Card>
-          </div>
+            <ul className="list-disc list-outside ml-4 space-y-1.5 text-text-secondary text-[15px] leading-relaxed">
+              {exp.body.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+            
+            <div className="flex flex-wrap gap-1.5 mt-4">
+              {exp.tags.map((tag, i) => (
+                <TechPill key={i} className="text-[11px] px-2 py-0.5">{tag}</TechPill>
+              ))}
+            </div>
+          </motion.div>
         ))}
       </div>
-    </section>
+    </div>
   );
 }

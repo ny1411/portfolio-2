@@ -94,38 +94,39 @@ export function CommandPalette() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 z-[200] bg-bg-primary/80 backdrop-blur-sm"
+            className="fixed inset-0 z-[200] bg-bg-primary/80"
           />
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ type: "spring", damping: 20, stiffness: 300 }}
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.15 }}
             className="fixed top-[20%] left-1/2 -translate-x-1/2 z-[201] w-full max-w-lg p-4"
           >
-            <div className="bg-bg-surface border border-accent-blue/30 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
-              <div className="flex items-center px-4 py-3 border-b border-white/5">
-                <Search className="w-5 h-5 text-text-secondary mr-3" />
+            <div className="bg-bg-surface border border-border rounded-lg overflow-hidden flex flex-col">
+              <div className="flex items-center px-4 py-3 border-b border-border">
+                <Search className="w-4 h-4 text-text-secondary mr-3" />
                 <input
                   ref={inputRef}
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Search NY.OSCORP database..."
-                  className="flex-1 bg-transparent border-none outline-none text-text-primary placeholder:text-text-secondary font-mono"
+                  placeholder="Search..."
+                  className="flex-1 bg-transparent border-none outline-none text-text-primary placeholder:text-text-secondary font-mono text-sm"
                 />
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-1 rounded-md hover:bg-bg-surface-hover text-text-secondary transition-colors"
+                  className="p-1 rounded-md hover:bg-bg-surface-hover text-text-secondary transition-colors duration-200"
                 >
                   <X className="w-4 h-4" />
                 </button>
               </div>
 
-              <div className="max-h-[300px] overflow-y-auto p-2">
+              <div className="max-h-[300px] overflow-y-auto p-1">
                 {filteredItems.length === 0 ? (
                   <div className="p-8 text-center text-text-secondary font-mono text-sm">
-                    No results found in database.
+                    No results found.
                   </div>
                 ) : (
                   filteredItems.map((item, index) => {
@@ -139,15 +140,15 @@ export function CommandPalette() {
                         }}
                         onMouseEnter={() => setSelectedIndex(index)}
                         className={cn(
-                          "w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-colors text-left",
+                          "w-full flex items-center gap-3 px-4 py-2.5 rounded-md transition-colors duration-150 text-left",
                           isSelected
-                            ? "bg-accent-blue/10 text-text-primary"
+                            ? "bg-bg-surface-hover text-text-primary"
                             : "text-text-secondary hover:bg-bg-surface-hover hover:text-text-primary"
                         )}
                       >
                         <item.icon
                           className={cn(
-                            "w-5 h-5",
+                            "w-4 h-4",
                             isSelected ? "text-accent-blue" : "text-text-secondary"
                           )}
                         />
@@ -158,14 +159,14 @@ export function CommandPalette() {
                 )}
               </div>
               
-              <div className="px-4 py-2 border-t border-white/5 flex items-center justify-between text-xs font-mono text-text-secondary bg-bg-primary/50">
+              <div className="px-4 py-2 border-t border-border flex items-center justify-between text-xs font-mono text-text-secondary">
                 <div className="flex items-center gap-2">
-                  <span className="flex items-center justify-center w-5 h-5 rounded bg-bg-surface border border-white/10 text-[10px]">↑</span>
-                  <span className="flex items-center justify-center w-5 h-5 rounded bg-bg-surface border border-white/10 text-[10px]">↓</span>
+                  <span className="flex items-center justify-center w-5 h-5 rounded border border-border text-[10px]">↑</span>
+                  <span className="flex items-center justify-center w-5 h-5 rounded border border-border text-[10px]">↓</span>
                   <span>Navigate</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="flex items-center justify-center px-1.5 h-5 rounded bg-bg-surface border border-white/10 text-[10px]">↵</span>
+                  <span className="flex items-center justify-center px-1.5 h-5 rounded border border-border text-[10px]">↵</span>
                   <span>Select</span>
                 </div>
               </div>

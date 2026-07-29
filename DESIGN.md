@@ -6,28 +6,6 @@
 
 ---
 
-# Philosophy
-
-The previous portfolio relied heavily on 3D models, scrollytelling and animations. Although visually impressive, it suffered from:
-
-- slow initial load
-- poor mobile performance
-- unnecessary GPU usage
-- high bundle size
-- distracting experience
-
-Portfolio v2 focuses on **performance-first storytelling**.
-
-The goal is to create an experience that feels like Spider-Man rather than showing Spider-Man.
-
-The user should immediately think:
-
-> "This feels like Spider-Man."
-
-without seeing explicit Spider-Man artwork.
-
----
-
 # Design Principles
 
 ## 1. Lightweight

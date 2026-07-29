@@ -8,7 +8,7 @@ export function TechPill({ className, children, ...props }: TechPillProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border border-white/10 px-2.5 py-0.5 text-xs font-semibold font-mono text-text-secondary transition-colors focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2",
+        "inline-flex items-center rounded-full border border-border px-3 py-1 text-xs font-mono text-text-secondary transition-colors duration-200 hover:border-text-secondary hover:text-text-primary",
         className
       )}
       {...props}

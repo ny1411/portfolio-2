@@ -5,16 +5,72 @@
   --font-heading: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
 
+  /* DESIGN.md exact colors */
   --color-bg-primary: #080A0F;
   --color-bg-surface: #11141B;
   --color-bg-surface-hover: #171C24;
-  --color-accent-blue: #3B82F6;
   --color-accent-red: #E53935;
+  --color-accent-red-dim: #C62828;
+  --color-accent-blue: #3B82F6;
+  --color-accent-blue-dim: #2563EB;
   --color-text-primary: #F5F7FA;
   --color-text-secondary: #A6ABB5;
+  --color-border: rgba(255, 255, 255, 0.08);
 }
 
 :root {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
+}
+
+/* Minimal scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* Subtle selection */
+::selection {
+  background-color: rgba(59, 130, 246, 0.25);
+  color: #fff;
+}
+
+/* Hairline divider utility */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 0;
+}
+
+/* Diagonal hash pattern */
+.bg-diagonal-pattern {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    var(--color-border) 10px,
+    var(--color-border) 11px
+  );
+}
+
+/* Noise texture overlay for entire page */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
 }
