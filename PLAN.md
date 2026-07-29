@@ -153,7 +153,7 @@ Instead of rendering literal character graphics, the design language uses subtle
 ## [ ] Phase 3: Core Sections & Static Pre-rendering
 - [x] Wire up **SSG (Static Site Generation)** to read from `resumeContent.ts` directly in Server Components (no client-side `useEffect` loaders).
 - [x] Implement the `HeroSection` (with cinematic CSS/SVG background and parallax fog).
-- [ ] Implement the `About` and `ExperienceTimeline` components.
+- [x] Implement the `About` and `ExperienceTimeline` components.
 - [ ] Implement the `ProjectGrid` and `ProjectCard` with electric blue hover border shifts (disable on touch devices).
 
 ## [ ] Phase 4: Animations & Spider-Man Easter Eggs
