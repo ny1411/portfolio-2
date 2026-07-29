@@ -2,12 +2,15 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     // Only show on non-touch devices
     if ("ontouchstart" in window || navigator.maxTouchPoints > 0) return;
 
@@ -33,12 +36,23 @@ export function CustomCursor() {
     };
   }, [visible]);
 
+  if (!mounted) return null;
+
   return (
     <motion.div
       ref={cursorRef}
       initial={{ opacity: 0 }}
-      animate={{ opacity: visible ? 0.5 : 0 }}
-      className="fixed w-6 h-6 -translate-x-1/2 -translate-y-1/2 rounded-full shadow-red-500/80 shadow-xl border border-accent-red/50 pointer-events-none z-[100] hidden md:block mix-blend-difference"
-    />
+      animate={{ opacity: visible ? 1 : 0 }}
+      className="fixed -translate-x-1/2 -translate-y-1/2 pointer-events-none z-[9999] hidden md:block"
+    >
+      <Image 
+        src="/custom-spider-cursor.png"
+        alt="Spider Cursor"
+        width={20}
+        height={20}
+        className="w-6 h-auto"
+        priority
+      />
+    </motion.div>
   );
 }

@@ -74,3 +74,8 @@ body::before {
   background-repeat: repeat;
   background-size: 256px 256px;
 }
+
+/* Hide default cursor to use custom spider cursor */
+* {
+  cursor: none !important;
+}
