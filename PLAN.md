@@ -156,11 +156,11 @@ Instead of rendering literal character graphics, the design language uses subtle
 - [x] Implement the `About` and `ExperienceTimeline` components.
 - [x] Implement the `ProjectGrid` and `ProjectCard` with electric blue hover border shifts (disable on touch devices).
 
-## [ ] Phase 4: Animations & Spider-Man Easter Eggs
+## [x] Phase 4: Animations & Spider-Man Easter Eggs
 - [x] Build the **custom animated spider cursor** with a fading web thread.
 - [x] Create the initial loading screen (spider descending, logo fade).
 - [x] Add the web-thread scroll indicator mapping to Lenis scroll progress.
-- [ ] Build the `⌘K` OSCORP-inspired Command Palette.
+- [x] Build the `⌘K` OSCORP-inspired Command Palette.
 
 ## [ ] Phase 5: Secondary Pages & Polish
 - [ ] Create the stylized `404` page ("Looks like you missed the swing").

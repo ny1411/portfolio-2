@@ -62,6 +62,7 @@ export function Navbar() {
         
         <div className="flex items-center gap-4">
           <button 
+            onClick={() => document.dispatchEvent(new Event("toggle-command-palette"))}
             className="flex items-center justify-center w-8 h-8 rounded-full border border-white/10 hover:bg-bg-surface-hover hover:border-white/20 transition-all group"
             aria-label="Command Palette"
           >

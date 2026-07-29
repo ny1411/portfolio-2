@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
+import { CommandPalette } from "@/components/ui/CommandPalette";
 import "./globals.css";
 
 const inter = Inter({
@@ -39,6 +40,7 @@ export default function RootLayout({
         <LoadingScreen />
         <CustomCursor />
         <ScrollIndicator />
+        <CommandPalette />
         <SmoothScroll>
           <Navbar />
           <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28">
