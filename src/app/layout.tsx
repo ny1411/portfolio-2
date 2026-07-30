@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { SpiderWebs } from "@/components/ui/SpiderWebs";
+import { Terminal } from "@/components/ui/Terminal";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
@@ -43,6 +44,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
+          <Terminal />
           <CustomCursor/>
           <SmoothScroll>
             <main className="flex-1 w-full relative z-[1]">

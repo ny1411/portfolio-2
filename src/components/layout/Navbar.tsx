@@ -86,12 +86,13 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* Command Palette Button */}
+          {/* Terminal Button */}
           <button
+            onClick={() => document.dispatchEvent(new Event("toggle-terminal"))}
             className="flex items-center justify-center h-8 px-2.5 rounded-md border border-border bg-bg-primary hover:border-text-secondary transition-colors duration-200 shadow-sm"
-            aria-label="Command Palette"
+            aria-label="Terminal"
           >
-            <span className="text-xs font-mono text-text-secondary">⌘K</span>
+            <span className="text-xs font-mono text-text-secondary">K</span>
           </button>
 
           {/* Theme Toggle Button */}
