@@ -28,11 +28,20 @@ export function HeroSection() {
     <>
       {/* === Hero Banner Image === */}
       <div className="relative w-full h-[250px] md:h-[350px] overflow-hidden border-b border-border">
+        {/* Light Theme Image */}
+        <Image
+          src="/hero-banner-light.png"
+          alt="Cityscape skyline"
+          fill
+          className="object-cover object-center block dark:hidden"
+          priority
+        />
+        {/* Dark Theme Image */}
         <Image
           src="/hero-banner.png"
-          alt="Dark cityscape skyline"
+          alt="Cityscape skyline"
           fill
-          className="object-cover object-center"
+          className="object-cover object-center hidden dark:block"
           priority
         />
         {/* Snowy or Rain effect */}
