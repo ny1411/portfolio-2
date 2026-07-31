@@ -8,6 +8,7 @@ import { SpiderWebs } from "@/components/ui/SpiderWebs";
 import { Terminal } from "@/components/ui/Terminal";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { UniverseModal } from "@/components/ui/UniverseModal";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -45,6 +46,7 @@ export default function RootLayout({
         >
           <Navbar />
           <Terminal />
+          <UniverseModal />
           <CustomCursor/>
           <SmoothScroll>
             <main className="flex-1 w-full relative z-[1]">

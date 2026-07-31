@@ -107,3 +107,42 @@ body::before {
 * {
   cursor: none !important;
 }
+
+/* Spider-Verse Animated Chromatic Aberration for Images */
+@keyframes spider-glitch-img {
+  0%, 100% { filter: drop-shadow(0px 0px 0px rgba(229, 57, 53, 0)) drop-shadow(0px 0px 0px rgba(59, 130, 246, 0)); }
+  10% { filter: drop-shadow(4px 0px 0px var(--color-accent-red)) drop-shadow(-4px 0px 0px var(--color-accent-blue)); }
+  20% { filter: drop-shadow(-2px 3px 0px var(--color-accent-red)) drop-shadow(2px -3px 0px var(--color-accent-blue)); }
+  30% { filter: drop-shadow(0px 0px 0px rgba(229, 57, 53, 0)) drop-shadow(0px 0px 0px rgba(59, 130, 246, 0)); }
+  85% { filter: drop-shadow(0px 0px 0px rgba(229, 57, 53, 0)) drop-shadow(0px 0px 0px rgba(59, 130, 246, 0)); }
+  90% { filter: drop-shadow(3px -2px 0px var(--color-accent-red)) drop-shadow(-3px 2px 0px var(--color-accent-blue)); }
+  95% { filter: drop-shadow(-4px 0px 0px var(--color-accent-red)) drop-shadow(4px 0px 0px var(--color-accent-blue)); }
+}
+
+.chromatic-aberration {
+  filter: drop-shadow(0px 0px 0px rgba(229, 57, 53, 0)) drop-shadow(0px 0px 0px rgba(59, 130, 246, 0));
+  transition: filter 0.3s ease-in-out;
+}
+
+.chromatic-aberration:hover {
+  animation: spider-glitch-img 1.2s infinite;
+}
+
+/* Spider-Verse Text Glitch */
+@keyframes spider-glitch-text {
+  0%, 100% { text-shadow: 0px 0px 0px rgba(229, 57, 53, 0), 0px 0px 0px rgba(59, 130, 246, 0); transform: translate(0); }
+  5% { text-shadow: 2px 2px 0px var(--color-accent-red), -2px 0px 0px var(--color-accent-blue); transform: translate(-1px, 1px); }
+  10% { text-shadow: -2px 1px 0px var(--color-accent-red), 2px -1px 0px var(--color-accent-blue); transform: translate(1px, -1px); }
+  15% { text-shadow: 0px 0px 0px rgba(229, 57, 53, 0), 0px 0px 0px rgba(59, 130, 246, 0); transform: translate(0); }
+  85% { text-shadow: 0px 0px 0px rgba(229, 57, 53, 0), 0px 0px 0px rgba(59, 130, 246, 0); transform: translate(0); }
+  90% { text-shadow: 3px -2px 0px var(--color-accent-red), -3px 1px 0px var(--color-accent-blue); transform: translate(1px, 1px); }
+  95% { text-shadow: -3px 0px 0px var(--color-accent-red), 3px 0px 0px var(--color-accent-blue); transform: translate(-1px, 0); }
+}
+
+.text-glitch {
+  animation: spider-glitch-text 3s infinite;
+}
+
+.text-glitch-fast {
+  animation: spider-glitch-text 1.5s infinite;
+}

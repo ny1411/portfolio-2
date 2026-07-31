@@ -11,11 +11,12 @@ type HistoryItem = {
 };
 
 const COMMANDS = {
-  help: "Available commands: help, about, experience, projects, resume, clear, exit",
+  help: "Available commands: help, about, experience, projects, resume, spidy, clear, exit",
   about: "Navigating to About...",
   experience: "Navigating to Experience...",
   projects: "Navigating to Projects...",
   resume: "Navigating to Resume...",
+  spidy: "Navigating to another universe...",
   whoami: "visitor",
   pwd: "/home/visitor",
   ls: "about  experience  projects  resume",
@@ -53,11 +54,11 @@ export function Terminal() {
     };
 
     document.addEventListener("keydown", down);
-    
+
     // Add custom event listener for manual trigger (from Navbar)
     const toggleEvent = () => setIsOpen((open) => !open);
     document.addEventListener("toggle-terminal", toggleEvent);
-    
+
     return () => {
       document.removeEventListener("keydown", down);
       document.removeEventListener("toggle-terminal", toggleEvent);
@@ -120,7 +121,9 @@ export function Terminal() {
     } else if (command === "projects") {
       setTimeout(() => { router.push("/#projects"); setIsOpen(false); }, 500);
     } else if (command === "resume") {
-      setTimeout(() => { router.push("/resume"); setIsOpen(false); }, 500);
+      setTimeout(() => { window.open(process.env.NEXT_PUBLIC_RESUME_URL, "_blank"); }, 500);
+    } else if (command === "spidy") {
+      setTimeout(() => { window.open(process.env.NEXT_PUBLIC_SPIDY_PORTFOLIO_URL, "_blank"); }, 500);
     }
   };
 
@@ -168,7 +171,7 @@ export function Terminal() {
               </div>
 
               {/* Terminal Body */}
-              <div 
+              <div
                 ref={scrollRef}
                 className="flex-1 max-h-[50vh] min-h-[300px] overflow-y-auto p-4 space-y-2 cursor-text"
                 onClick={() => inputRef.current?.focus()}
@@ -187,7 +190,7 @@ export function Terminal() {
                     )}
                   </div>
                 ))}
-                
+
                 <div className="flex items-center">
                   <span className="text-red-500">visitor@portfolio</span>
                   <span className="text-blue-400">~/</span>

@@ -90,7 +90,9 @@ export function HeroSection() {
                   Get in touch
                 </button>
               </Link>
-              <Link href="/resume">
+              <Link
+                href={process.env.NEXT_PUBLIC_RESUME_URL || ""}
+                target="_blank">
                 <button className="inline-flex items-center gap-2 px-6 py-2.5 border border-border text-text-primary text-sm font-medium rounded-full hover:border-text-secondary hover:bg-bg-surface-hover transition-all duration-200">
                   <FileText className="w-4 h-4" />
                   Resume

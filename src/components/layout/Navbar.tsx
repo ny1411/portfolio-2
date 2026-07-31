@@ -21,7 +21,7 @@ export function Navbar() {
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
-    
+
     if (latest <= 50) {
       setHidden(false);
     } else {
@@ -37,7 +37,7 @@ export function Navbar() {
     { label: "Projects", href: "#projects" },
     { label: "Experience", href: "#experience" },
     { label: "About", href: "#about" },
-    { label: "Resume", href: "/resume" },
+    { label: "Resume", href: process.env.NEXT_PUBLIC_RESUME_URL || "" },
   ];
 
   return (
@@ -55,20 +55,26 @@ export function Navbar() {
         )}
       >
         {/* Hanging Spider */}
-        <div className="absolute top-0 left-[15%] md:left-[10%] w-14 md:w-20 pointer-events-none z-10">
-          <Image 
+        <Link
+          href={process.env.NEXT_PUBLIC_SPIDY_PORTFOLIO_URL || ""}
+          target="_blank" className="group absolute top-0 left-[15%] md:left-[10%] w-14 md:w-20 pointer-events-auto z-10">
+          <div
+            className="absolute top-20 left-10 md:left-12 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300 p-2 text-sm font-mono text-text-secondary bg-bg-primary rounded-lg z-10 whitespace-nowrap border border-border shadow-lg">
+            Change universe?
+          </div>
+          <Image
             src="/hanging-spider.png"
             alt="Hanging Spider"
             width={60}
             height={90}
-            className="w-full h-auto"
+            className="w-full h-auto chromatic-aberration"
           />
-        </div>
+        </Link>
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <span className="font-heading font-bold text-lg text-text-primary tracking-tight">
-            neeraj
+            nyc
           </span>
         </Link>
 
@@ -79,6 +85,7 @@ export function Navbar() {
               <Link
                 key={i}
                 href={link.href}
+                target={link.href.startsWith("#") ? "_self" : "_blank"}
                 className="font-medium text-text-secondary hover:text-text-primary transition-colors duration-200"
               >
                 {link.label}
