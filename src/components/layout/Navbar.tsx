@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, checkDeviceCapabilities } from "@/lib/utils";
 import { useEffect } from "react";
 
 export function Navbar() {
@@ -14,9 +14,14 @@ export function Navbar() {
   const [hidden, setHidden] = useState(false);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [isCapable, setIsCapable] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    setIsCapable(checkDeviceCapabilities());
+    const id = requestAnimationFrame(() => {
+      setMounted(true);
+    });
+    return () => cancelAnimationFrame(id);
   }, []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -55,21 +60,34 @@ export function Navbar() {
         )}
       >
         {/* Hanging Spider */}
-        <Link
-          href={process.env.NEXT_PUBLIC_SPIDY_PORTFOLIO_URL || ""}
-          target="_blank" className="group absolute top-0 left-[15%] md:left-[10%] w-14 md:w-20 pointer-events-auto z-10">
-          <div
-            className="absolute top-20 left-10 md:left-12 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300 p-2 text-sm font-mono text-text-secondary bg-bg-primary rounded-lg z-10 whitespace-nowrap border border-border shadow-lg">
-            Change universe?
-          </div>
-          <Image
-            src="/hanging-spider.png"
-            alt="Hanging Spider"
-            width={60}
-            height={90}
-            className="w-full h-auto chromatic-aberration"
-          />
-        </Link>
+        <div className="absolute top-0 left-[15%] md:left-[10%] w-14 md:w-20 pointer-events-auto z-10">
+          {mounted && isCapable ? (
+            <Link
+              href={process.env.NEXT_PUBLIC_SPIDY_PORTFOLIO_URL || ""}
+              target="_blank" className="group block"
+            >
+              <div
+                className="absolute top-20 left-10 md:left-12 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300 p-2 text-sm font-mono text-text-secondary bg-bg-primary rounded-lg z-10 whitespace-nowrap border border-border shadow-lg">
+                Change universe?
+              </div>
+              <Image
+                src="/hanging-spider.png"
+                alt="Hanging Spider"
+                width={60}
+                height={90}
+                className="w-full h-auto chromatic-aberration"
+              />
+            </Link>
+          ) : (
+            <Image
+              src="/hanging-spider.png"
+              alt="Hanging Spider"
+              width={60}
+              height={90}
+              className="w-full h-auto chromatic-aberration"
+            />
+          )}
+        </div>
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
