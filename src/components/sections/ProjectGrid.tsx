@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { TechPill } from "@/components/ui/TechPill";
 import type { ProjectItem } from "@/types";
 
@@ -65,12 +65,10 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
               )}
             </div>
 
-            {/* Description / Bullets */}
-            <ul className="list-disc list-outside ml-4 space-y-1.5 text-text-secondary text-[15px] leading-relaxed mb-4 max-w-3xl">
-              {project.body.map((point, i) => (
-                <li key={i}>{point}</li>
-              ))}
-            </ul>
+            {/* Casual 1-liner description */}
+            <p className="text-[15px] text-text-secondary leading-relaxed mb-4 max-w-3xl">
+              {project.body[0]}
+            </p>
 
             {/* Tech tags */}
             <div className="flex flex-wrap gap-1.5">
