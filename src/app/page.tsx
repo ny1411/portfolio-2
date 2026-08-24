@@ -29,7 +29,10 @@ export default function Home() {
 
         {/* About */}
         <section id="about" className="w-full max-w-[1024px] bg-bg-primary md:border-x border-border p-8 md:p-20 scroll-mt-24">
-          <AboutSection content={resumeContent.resumePages[1]} />
+          <AboutSection
+            content={resumeContent.resumePages[1]}
+            skills={resumeContent.skillsAndStack}
+          />
         </section>
 
         {/* Separator */}

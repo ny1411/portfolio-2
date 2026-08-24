@@ -47,16 +47,23 @@ export function ExperienceTimeline({ experiences }: ExperienceTimelineProps) {
                   {exp.subtitle}
                 </p>
               </div>
-              {exp.link && (
-                <Link 
-                  href={exp.link} 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-200 shrink-0"
-                >
-                  View details <ArrowUpRight className="w-3.5 h-3.5" />
-                </Link>
-              )}
+              <div className="flex flex-col md:items-end gap-1.5 shrink-0">
+                {exp.period && (
+                  <span className="text-xs font-mono text-text-secondary">
+                    {exp.period}
+                  </span>
+                )}
+                {exp.link && (
+                  <Link 
+                    href={exp.link} 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs font-mono text-text-secondary hover:text-accent-blue transition-colors duration-200"
+                  >
+                    View details <ArrowUpRight className="w-3.5 h-3.5" />
+                  </Link>
+                )}
+              </div>
             </div>
             
             <ul className="list-disc list-outside ml-4 space-y-1.5 text-text-secondary text-[15px] leading-relaxed">

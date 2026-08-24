@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { TechPill } from "@/components/ui/TechPill";
 import type { ProjectItem } from "@/types";
 
@@ -26,13 +26,6 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
           </h2>
           <div className="flex-1 h-px bg-border" />
         </div>
-        <Link
-          href="#projects"
-          className="inline-flex items-center gap-1 text-sm font-medium text-accent-blue hover:text-accent-blue-dim transition-colors duration-200 ml-4"
-        >
-          View All
-          <ArrowRight className="w-3.5 h-3.5" />
-        </Link>
       </div>
 
       {/* Project entries — flat, separated by hairlines */}
@@ -43,31 +36,41 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
             className="group py-6 first:pt-0 last:pb-0"
           >
             {/* Header row */}
-            <div className="flex items-start justify-between mb-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
               <h3 className="text-lg font-bold font-heading text-text-primary group-hover:text-accent-blue transition-colors duration-200">
                 {project.title}
               </h3>
               {project.links.length > 0 && (
-                <div className="flex items-center gap-3">
-                  {project.links.map((link, i) => (
-                    <Link
-                      key={i}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-text-secondary hover:text-text-primary transition-colors duration-200"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </Link>
-                  ))}
+                <div className="flex items-center gap-2">
+                  {project.links.map((link, i) => {
+                    const isCode =
+                      link.label.toLowerCase().includes("source") ||
+                      link.label.toLowerCase().includes("code") ||
+                      link.label.toLowerCase().includes("github");
+                    const displayName = isCode ? "Code Link" : "Live Link";
+                    return (
+                      <Link
+                        key={i}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs font-mono text-text-secondary hover:text-accent-blue hover:border-text-secondary transition-colors duration-200 border border-border px-2.5 py-1 rounded-full bg-bg-surface/50"
+                      >
+                        {displayName}
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </Link>
+                    );
+                  })}
                 </div>
               )}
             </div>
 
-            {/* Description */}
-            <p className="text-sm text-text-secondary leading-relaxed mb-4 max-w-2xl">
-              {project.body[0]}
-            </p>
+            {/* Description / Bullets */}
+            <ul className="list-disc list-outside ml-4 space-y-1.5 text-text-secondary text-[15px] leading-relaxed mb-4 max-w-3xl">
+              {project.body.map((point, i) => (
+                <li key={i}>{point}</li>
+              ))}
+            </ul>
 
             {/* Tech tags */}
             <div className="flex flex-wrap gap-1.5">
