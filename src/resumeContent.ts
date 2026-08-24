@@ -104,9 +104,7 @@ export const resumeContent = {
 				'Playwright',
 			],
 			body: [
-				'Developed a Next.js startup discovery platform indexing 900+ Y Combinator startups, featuring instant search, multi-parameter filtering, pagination, and dynamic company and founder profile pages.',
-				'Automated startup data ingestion pipelines using Playwright and Cheerio to scrape, normalize, and upsert records into Firebase Firestore.',
-				'Delivered AI-assisted outreach features by integrating Google Gemini Flash API, generating personalized message drafts and reducing manual drafting time by 35%.',
+				'A clean startup discovery platform indexing 900+ YC companies with instant search, automated Playwright/Cheerio scrapers, and Gemini Flash for personalized founder outreach.',
 			],
 			links: [
 				{
@@ -135,9 +133,7 @@ export const resumeContent = {
 				'Solidity',
 			],
 			body: [
-				'Orchestrated a microservice-based academic certificate verification platform using React, Node.js, Flask, Solidity, and Docker with asynchronous document processing workflows.',
-				'Designed dual-service verification pipelines linking Node.js/Express gateways with Python-based OCR (Tesseract) and OpenCV forensic analysis to detect document tampering.',
-				'Built immutable certificate hash anchoring on-chain using Solidity/EVM smart contracts with institution-scoped role-based access control for trustless verification.',
+				'A microservice academic certificate validator featuring OpenCV + Tesseract OCR tampering detection, FastAPI async workers, and Solidity smart contract anchoring.',
 			],
 			links: [
 				{
