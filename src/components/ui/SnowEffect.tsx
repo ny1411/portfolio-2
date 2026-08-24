@@ -3,24 +3,35 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
+interface Flake {
+  id: number;
+  top: number;
+  size: number;
+  duration: number;
+  delay: number;
+  opacity: number;
+  yDrift: number;
+}
+
 export function SnowEffect() {
-  const [mounted, setMounted] = useState(false);
+  const [flakes, setFlakes] = useState<Flake[]>([]);
   
   useEffect(() => {
-    setMounted(true);
+    const id = requestAnimationFrame(() => {
+      setFlakes(Array.from({ length: 60 }).map((_, i) => ({
+        id: i,
+        top: Math.random() * 100,
+        size: Math.random() * 2.5 + 0.5,
+        duration: Math.random() * 6 + 15,
+        delay: Math.random() * -15,
+        opacity: Math.random() * 0.6 + 0.4,
+        yDrift: (Math.random() - 0.2) * 700,
+      })));
+    });
+    return () => cancelAnimationFrame(id);
   }, []);
 
-  if (!mounted) return null;
-
-  const flakes = Array.from({ length: 60 }).map((_, i) => ({
-    id: i,
-    top: Math.random() * 100, // start anywhere vertically
-    size: Math.random() * 2.5 + 0.5, // 1px to 3.5px
-    duration: Math.random() * 6 + 15, // 4s to 10s for windy effect
-    delay: Math.random() * -15, // random negative delay to start mid-animation
-    opacity: Math.random() * 0.6 + 0.4, // 0.4 to 1.0 opacity
-    yDrift: (Math.random() - 0.2) * 700, // Mostly drifts down, sometimes up
-  }));
+  if (flakes.length === 0) return null;
 
   return (
     <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">

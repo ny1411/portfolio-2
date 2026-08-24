@@ -14,7 +14,7 @@ export const UniverseModal = () => {
       if (!checkDeviceCapabilities()) return;
 
       // Random time between 15s and 45s
-      const randomTime = Math.floor(Math.random() * (45000 - 15000 + 1) + 15000);
+      const randomTime = Math.floor(Math.random() * (60000 + 1) + 25000);
       timer = setTimeout(() => {
         setIsOpen(true);
       }, randomTime);

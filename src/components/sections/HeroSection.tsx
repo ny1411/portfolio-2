@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FileText } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { SnowEffect } from "../ui/SnowEffect";
 import { RainEffect } from "../ui/RainEffect";
 
@@ -24,6 +25,15 @@ const MailIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 export function HeroSection() {
+  const [effectType, setEffectType] = useState<"rain" | "snow" | null>(null);
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => {
+      setEffectType(Math.random() > 0.5 ? "rain" : "snow");
+    });
+    return () => cancelAnimationFrame(id);
+  }, []);
+
   return (
     <>
       {/* === Hero Banner Image === */}
@@ -45,9 +55,10 @@ export function HeroSection() {
           priority
         />
         {/* Snowy or Rain effect */}
-        {Math.random() > 0.5 ? <RainEffect /> : <SnowEffect />}
+        {effectType === "rain" && <RainEffect />}
+        {effectType === "snow" && <SnowEffect />}
       </div>
-      <div className="absolute z-0 inset-0 pointer-events-none backdrop-blur-xl [mask-image:radial-gradient(ellipse_at_center,transparent_50%,black_100%)]" />
+      <div className="absolute z-0 inset-0 pointer-events-none lg:backdrop-blur-xl [mask-image:radial-gradient(ellipse_at_center,transparent_50%,black_100%)]" />
 
       {/* === Profile Content === */}
       <div className="w-full p-8 md:p-20">
@@ -66,7 +77,7 @@ export function HeroSection() {
 
             {/* Role + Location */}
             <div className="flex flex-wrap items-center gap-3 text-sm text-text-secondary">
-              <span className="font-medium text-text-primary">Computer Engineer</span>
+              <span className="font-medium text-text-primary">Full Stack Developer</span>
               <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border border-border">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block" />
                 <span>Pune, India</span>
@@ -75,11 +86,7 @@ export function HeroSection() {
 
             {/* Bio */}
             <p className="text-text-secondary leading-relaxed max-w-xl text-[15px]">
-              CS student at{" "}
-              <span className="bg-accent-blue/10 text-accent-blue px-1 rounded">
-                TSSM&apos;s BSCOER
-              </span>
-              . I build things for the web, tinker with systems, and occasionally touch grass.
+              mastering all trades.
             </p>
 
             {/* CTA Buttons */}

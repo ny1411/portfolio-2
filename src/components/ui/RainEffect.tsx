@@ -3,25 +3,37 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
+interface Drop {
+  id: number;
+  left: number;
+  width: number;
+  height: number;
+  duration: number;
+  delay: number;
+  opacity: number;
+  xDrift: number;
+}
+
 export function RainEffect() {
-  const [mounted, setMounted] = useState(false);
+  const [drops, setDrops] = useState<Drop[]>([]);
   
   useEffect(() => {
-    setMounted(true);
+    const id = requestAnimationFrame(() => {
+      setDrops(Array.from({ length: 120 }).map((_, i) => ({
+        id: i,
+        left: Math.random() * 120 - 10,
+        width: Math.random() * 1 + 0.5,
+        height: Math.random() * 20 + 5,
+        duration: Math.random() * 0.4 + 0.4,
+        delay: Math.random() * -5,
+        opacity: Math.random() * 0.3 + 0,
+        xDrift: 60 + Math.random() * -20,
+      })));
+    });
+    return () => cancelAnimationFrame(id);
   }, []);
 
-  if (!mounted) return null;
-
-  const drops = Array.from({ length: 120 }).map((_, i) => ({
-    id: i,
-    left: Math.random() * 120 - 10, // Start slightly off-screen to handle wind drift
-    width: Math.random() * 1 + 0.5, // 1px to 2px
-    height: Math.random() * 20 + 5, // 15px to 35px
-    duration: Math.random() * 0.4 + 0.4, // 0.4s to 0.8s (fast falling)
-    delay: Math.random() * -5, // random negative delay
-    opacity: Math.random() * 0.3 + 0, // low opacity
-    xDrift: 60+ Math.random() * -20, // Consistent wind drift to the right
-  }));
+  if (drops.length === 0) return null;
 
   return (
     <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
