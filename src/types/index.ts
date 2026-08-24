@@ -10,6 +10,7 @@ export interface ResumePage {
 export interface WorkExperience {
   title: string;
   subtitle: string;
+  period?: string;
   body: readonly string[];
   link?: string;
   tags: readonly string[];
