@@ -47,7 +47,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                       link.label.toLowerCase().includes("source") ||
                       link.label.toLowerCase().includes("code") ||
                       link.label.toLowerCase().includes("github");
-                    const displayName = isCode ? "Code Link" : "Live Link";
+                    const displayName = isCode ? "GitHub" : "Live";
                     return (
                       <Link
                         key={i}
