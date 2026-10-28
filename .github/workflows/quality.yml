@@ -1,0 +1,55 @@
+name: Portfolio quality
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NEXT_TELEMETRY_DISABLED: 1
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - name: Check telemetry privacy
+        run: node --experimental-strip-types --test tests/analytics.test.mjs
+      - name: Check TypeScript
+        run: npx tsc --noEmit
+      - run: npm run build
+      - name: Verify production security headers and caching
+        shell: bash
+        run: |
+          npm run start -- --hostname 127.0.0.1 > "$RUNNER_TEMP/portfolio-next.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          ready=false
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:3000/ > /dev/null; then
+              ready=true
+              break
+            fi
+            sleep 1
+          done
+          if [ "$ready" != true ]; then
+            cat "$RUNNER_TEMP/portfolio-next.log"
+            exit 1
+          fi
+          node scripts/check-security-headers.mjs http://127.0.0.1:3000
+          node scripts/check-delivery.mjs http://127.0.0.1:3000

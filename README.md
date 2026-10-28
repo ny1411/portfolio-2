@@ -91,6 +91,8 @@ The design is driven by `DESIGN.md`. If you intend to fork this project, keep th
 
 ## ☁️ Deployment
 
+Project-specific Vercel features, dashboard activation, security, plan limits, CI and rollback procedures are documented in [the Vercel operations runbook](docs/vercel-platform.md).
+
 The easiest way to deploy this Next.js app is to use [Vercel](https://vercel.com/):
 
 ```bash

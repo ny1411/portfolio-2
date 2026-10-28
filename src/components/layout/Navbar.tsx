@@ -17,8 +17,8 @@ export function Navbar() {
   const [isCapable, setIsCapable] = useState(false);
 
   useEffect(() => {
-    setIsCapable(checkDeviceCapabilities());
     const id = requestAnimationFrame(() => {
+      setIsCapable(checkDeviceCapabilities());
       setMounted(true);
     });
     return () => cancelAnimationFrame(id);
