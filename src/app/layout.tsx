@@ -9,6 +9,8 @@ import { Terminal } from "@/components/ui/Terminal";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { UniverseModal } from "@/components/ui/UniverseModal";
+import { VercelTelemetry } from "@/components/observability/VercelTelemetry";
+import { siteMetadata } from "@/lib/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,10 +27,7 @@ const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
-export const metadata: Metadata = {
-  title: "Neeraj Yamaji | Frontend Developer",
-  description: "Frontend developer focused on React, TypeScript, responsive web experiences, and practical AI-powered developer tools.",
-};
+export const metadata: Metadata = siteMetadata;
 
 export default function RootLayout({
   children,
@@ -56,6 +55,7 @@ export default function RootLayout({
           </SmoothScroll>
           <Footer />
         </ThemeProvider>
+        <VercelTelemetry enabled={process.env.VERCEL_ENV === "production"} />
       </body>
     </html>
   );

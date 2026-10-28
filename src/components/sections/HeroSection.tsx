@@ -44,7 +44,8 @@ export function HeroSection() {
           alt="Cityscape skyline"
           fill
           className="object-cover object-center block dark:hidden"
-          priority
+          sizes="(max-width: 1024px) 100vw, 1024px"
+          loading="eager"
         />
         {/* Dark Theme Image */}
         <Image
@@ -52,7 +53,8 @@ export function HeroSection() {
           alt="Cityscape skyline"
           fill
           className="object-cover object-center hidden dark:block"
-          priority
+          sizes="(max-width: 1024px) 100vw, 1024px"
+          loading="eager"
         />
         {/* Snowy or Rain effect */}
         {effectType === "rain" && <RainEffect />}
@@ -91,7 +93,7 @@ export function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
-              <Link href="mailto:neerajyamaji@gmail.com">
+              <Link href="mailto:neerajyamaji@gmail.com" data-portfolio-event="contact">
                 <button className="inline-flex items-center gap-2 px-6 py-2.5 bg-accent-blue text-white text-sm font-medium rounded-full hover:bg-accent-blue-dim transition-colors duration-200">
                   <MailIcon className="w-4 h-4" />
                   Get in touch
@@ -99,6 +101,7 @@ export function HeroSection() {
               </Link>
               <Link
                 href={process.env.NEXT_PUBLIC_RESUME_URL || ""}
+                data-portfolio-event="resume"
                 target="_blank">
                 <button className="inline-flex items-center gap-2 px-6 py-2.5 border border-border text-text-primary text-sm font-medium rounded-full hover:border-text-secondary hover:bg-bg-surface-hover transition-all duration-200">
                   <FileText className="w-4 h-4" />
@@ -147,6 +150,7 @@ export function HeroSection() {
                 alt="Neeraj Yamaji avatar"
                 width={192}
                 height={192}
+                sizes="(min-width: 1024px) 192px, 160px"
                 className="object-cover w-full h-full"
               />
             </div>

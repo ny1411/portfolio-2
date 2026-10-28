@@ -55,13 +55,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
         
         <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-white/5">
           {project.links.map((link, idx) => {
-            const isGithub = link.label.toLowerCase().includes("source");
+            const isGithub = link.href.startsWith("https://github.com/");
             const Icon = isGithub ? GithubIcon : ExternalLink;
             
             return (
               <Link
                 key={idx}
                 href={link.href}
+                data-portfolio-event={isGithub ? "project-source" : "project-demo"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors"
